@@ -18,7 +18,7 @@
 
 # 📖 OOP School Library <a name="about-project"></a>
 
-**Decode Morse message** School library OOP implementation. Using Ruby language.
+School library OOP implementation. Using Ruby language.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -51,7 +51,7 @@ In order to run this project you need:
 - Navigate to oop-school-library folder/directory
 
   ```bash
-  cd morse-code-massage
+  cd oop-school-library
   ```
 
 - On the command line, at the project's root, run `bundle install` to install app dependencies
