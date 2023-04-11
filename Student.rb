@@ -11,5 +11,5 @@ class Student < Person
   end
 end
 
-student_one = Student.new(31, 'James', false, 12)
+student_one = Student.new(31, 'Jame', false, 21)
 puts student_one.can_use_services?
