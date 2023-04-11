@@ -1,4 +1,4 @@
-require './person'
+require_relative 'person'
 
 class Student < Person
   def initialize(age, name, parent_permission, classroom)
@@ -10,6 +10,3 @@ class Student < Person
     '¯(ツ)/¯'
   end
 end
-
-student_one = Student.new(31, 'Jame', false, 21)
-puts student_one.can_use_services?
