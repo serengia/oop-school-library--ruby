@@ -1,11 +1,11 @@
-require "./nameable"
+require './nameable'
 
 class Person < Nameable
   attr_writer :id
   attr_accessor :name, :age
 
   # rubocop:disable Style/OptionalBooleanParameter
-  def initialize(age, name = "Unknown", parent_permission = true)
+  def initialize(age, name = 'Unknown', parent_permission = true)
     # rubocop:enable Style/OptionalBooleanParameter
     super()
     @id = rand(1..10_000)
