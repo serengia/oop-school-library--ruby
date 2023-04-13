@@ -1,17 +1,19 @@
-require './nameable'
+require "./nameable"
+require "./rental"
 
 class Person < Nameable
   attr_writer :id
-  attr_accessor :name, :age
+  attr_accessor :name, :age, :rentals
 
   # rubocop:disable Style/OptionalBooleanParameter
-  def initialize(age, name = 'Unknown', parent_permission = true)
+  def initialize(age, name = "Unknown", parent_permission = true)
     # rubocop:enable Style/OptionalBooleanParameter
     super()
     @id = rand(1..10_000)
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @rentals = []
   end
 
   def can_use_services?
@@ -20,6 +22,10 @@ class Person < Nameable
 
   def correct_name
     name
+  end
+
+  def add_rental(book, date)
+    @rentals.push(Rental.new(date, book, self))
   end
 
   private
