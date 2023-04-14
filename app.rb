@@ -6,26 +6,16 @@ require './rental'
 require './teacher'
 require './user_input'
 
-def main_choices
-  "Please choose an option by entering a number:
-1 - List all books
-2 - List all people
-3 - Create a person
-4 - Create a book
-5 - Create a rental
-6 - List all rentals for a given person
-7 - Exit"
-end
-
 class App
-  def initialize(books = [], people = [])
+  def initialize(main_choices, books = [], people = [])
     @books = books
     @people = people
+    @main_choices = main_choices
   end
 
   def run
     loop do
-      puts main_choices
+      puts @main_choices
       choice = UserInput.get_number('', 'Please enter a valid number!')
       return if choice == 7
 
