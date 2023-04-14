@@ -1,10 +1,20 @@
-require './person'
-require './capitalize_decorator'
-require './trimmer_decorator'
+require './app'
 
-person = Person.new(22, 'maximilianus')
-puts person.correct_name
-capitalized_person = CapitalizeDecorator.new(person)
-puts capitalized_erson.correct_name
-capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
-puts capitalized_trimmed_person.correct_name
+def main_choices
+  "Please choose an option by entering a number:
+  1 - List all books
+  2 - List all people
+  3 - Create a person
+  4 - Create a book
+  5 - Create a rental
+  6 - List all rentals for a given person
+  7 - Exit"
+end
+
+def main
+  puts "Welcome to School Library App!\n\n"
+  app = App.new(main_choices)
+  app.run
+end
+
+main
