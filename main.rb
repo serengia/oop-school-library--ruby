@@ -1,5 +1,5 @@
 #! /usr/bin/env ruby
-require "app"
+require "./app"
 
 def main
   puts "Welcome to School Library App!\n\n"

@@ -2,7 +2,7 @@ require "./nameable"
 require "./rental"
 
 class Person < Nameable
-  attr_writer :id
+  attr_reader :id
   attr_accessor :name, :age, :rentals
 
   # rubocop:disable Style/OptionalBooleanParameter
