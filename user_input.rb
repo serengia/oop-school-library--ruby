@@ -1,7 +1,7 @@
-require_relative "boolean"
+require_relative 'boolean'
 
 class UserInput
-  def self.get_str(param_name, error = "")
+  def self.get_str(param_name, error = '')
     print param_name
     input = gets.chomp
 
@@ -12,19 +12,19 @@ class UserInput
     input
   end
 
-  def self.get_number(param_name, error = "")
+  def self.get_number(param_name, error = '')
     print param_name
     input = gets.chomp
     converted = input.to_i
 
-    unless converted.positive? || input == "0"
+    unless converted.positive? || input == '0'
       puts error
       return get_number(param_name, error)
     end
     converted
   end
 
-  def self.get_bool(param_name, error = "")
+  def self.get_bool(param_name, error = '')
     print param_name
     input = gets.chomp
     input = Boolean.new(input).value
@@ -36,7 +36,7 @@ class UserInput
     input
   end
 
-  def self.get_date(param_name, error = "")
+  def self.get_date(param_name, error = '')
     print param_name
     input = gets.chomp
 

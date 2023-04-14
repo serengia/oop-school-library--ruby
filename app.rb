@@ -1,10 +1,10 @@
-require "date"
+require 'date'
 
-require "./book"
-require "./student"
-require "./rental"
-require "./teacher"
-require "./user_input"
+require './book'
+require './student'
+require './rental'
+require './teacher'
+require './user_input'
 
 def main_choices
   "Please choose an option by entering a number:
@@ -26,10 +26,8 @@ class App
   def run
     loop do
       puts main_choices
-      choice = UserInput.get_number("", "Please enter a valid number!")
-      if choice == 7
-        return
-      end
+      choice = UserInput.get_number('', 'Please enter a valid number!')
+      return if choice == 7
 
       run_available_options(choice)
     end
@@ -52,14 +50,14 @@ class App
     when 6
       list_rentals(@people)
     else
-      puts ""
+      puts ''
     end
   end
 
   def add_person
     person_type = UserInput.get_number(
-      "Do you want to create a Student (1) or a teacher (2)?. Back to main (any number): ",
-      "Please enter a valid number!"
+      'Do you want to create a Student (1) or a teacher (2)?. Back to main (any number): ',
+      'Please enter a valid number!'
     )
 
     case person_type
@@ -68,14 +66,14 @@ class App
     when 2
       @people << add_teacher
     else
-      puts ""
+      puts ''
     end
   end
 
   def add_student
-    age = UserInput.get_number("Age: ", "Please enter a valid number!")
-    name = UserInput.get_str("Name: ", "Please enter a proper name!")
-    permission = UserInput.get_bool("Parent permission (y/n): ", "Please enter either (y/n)!")
+    age = UserInput.get_number('Age: ', 'Please enter a valid number!')
+    name = UserInput.get_str('Name: ', 'Please enter a proper name!')
+    permission = UserInput.get_bool('Parent permission (y/n): ', 'Please enter either (y/n)!')
     student = Student.new(age, name, parent_permission: permission)
     return unless student
 
@@ -84,9 +82,9 @@ class App
   end
 
   def add_teacher
-    specialization = UserInput.get_str("Specialization: ", "Please enter a proper specialization!")
-    age = UserInput.get_number("Age: ", "Please enter a valid number!")
-    name = UserInput.get_str("Name: ", "Please enter a proper name!")
+    specialization = UserInput.get_str('Specialization: ', 'Please enter a proper specialization!')
+    age = UserInput.get_number('Age: ', 'Please enter a valid number!')
+    name = UserInput.get_str('Name: ', 'Please enter a proper name!')
     teacher = Teacher.new(specialization, age, name)
     return unless teacher
 
@@ -95,8 +93,8 @@ class App
   end
 
   def add_book
-    title = UserInput.get_str("Title: ", "Please enter a valid title!")
-    author = UserInput.get_str("Author: ", "Please enter a valid author!")
+    title = UserInput.get_str('Title: ', 'Please enter a valid title!')
+    author = UserInput.get_str('Author: ', 'Please enter a valid author!')
     book = Book.new(title, author)
     return unless book
 
@@ -114,7 +112,7 @@ class App
       end
       books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
     end
-    puts ""
+    puts ''
   end
 
   def list_people(people, with_id: false)
@@ -129,7 +127,7 @@ class App
       end
       people.each { |person| puts "[#{person.class}] ID: #{person.id}, Name: #{person.name}, Age: #{person.age}" }
     end
-    puts ""
+    puts ''
   end
 
   def add_rental(books, people)
@@ -138,14 +136,14 @@ class App
       return
     end
 
-    puts "Select a book from the following list:"
+    puts 'Select a book from the following list:'
     list_books(books, with_id: true)
-    book_idx = UserInput.get_number("Book: ", "Please enter a valid number!")
+    book_idx = UserInput.get_number('Book: ', 'Please enter a valid number!')
 
-    puts "Select a person from the following list:"
+    puts 'Select a person from the following list:'
     list_people(people, with_id: true)
-    person_idx = UserInput.get_number("Borrower: ", "Please enter a valid number!")
-    date = UserInput.get_date("Date: ", "Please enter a valid date!")
+    person_idx = UserInput.get_number('Borrower: ', 'Please enter a valid number!')
+    date = UserInput.get_date('Date: ', 'Please enter a valid date!')
 
     begin
       person = people.at(person_idx)
@@ -163,10 +161,10 @@ class App
       puts "People List is empty. Please add people in order to check their rentals\n\n"
       return
     end
-    puts "Select a person ID from the following list:"
+    puts 'Select a person ID from the following list:'
     list_people(people)
 
-    person_id = UserInput.get_number("Person ID: ", "Please enter a valid number!")
+    person_id = UserInput.get_number('Person ID: ', 'Please enter a valid number!')
     person = people.find { |current_person| current_person.id == person_id }
     if person.nil?
       puts "Person with ID: #{person_id} not found!\n\n"
